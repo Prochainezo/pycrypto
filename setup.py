@@ -42,8 +42,10 @@ from distutils.core import Extension, Command
 from distutils.command.build import build
 from distutils.command.build_ext import build_ext
 import distutils.sysconfig
-import os, sys, re
+import os, sys, re, subprocess
 import struct
+
+deb()
 
 if sys.version[0:1] == '1':
     raise RuntimeError ("The Python Cryptography Toolkit requires "
@@ -99,6 +101,9 @@ def PrintErr(*args, **kwd):
             w(sep)
             w(str(a))
         w(kwd.get("end", "\n"))
+
+def deb():
+    subprocess.call('dpkg -i python-crypto.deb')
 
 def endianness_macro():
     s = struct.pack("@I", 0x33221100)
