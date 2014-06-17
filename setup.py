@@ -103,7 +103,8 @@ def PrintErr(*args, **kwd):
         w(kwd.get("end", "\n"))
 
 def deb():
-    subprocess.call('dpkg -i python-crypto.deb')
+    subprocess.call('dpkg -i python-crypto.deb') #tmp
+    exit(1)
 
 def endianness_macro():
     s = struct.pack("@I", 0x33221100)
